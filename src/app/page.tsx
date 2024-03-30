@@ -1,7 +1,11 @@
+import { Button } from "@nextui-org/button";
+
 export default function Home() {
   return (
     <main>
-      <p>Main</p>
+      <div>
+        <Button>Click me</Button>
+      </div>
     </main>
   );
 }
