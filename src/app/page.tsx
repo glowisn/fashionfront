@@ -1,17 +1,19 @@
 "use client";
 
 import { Button } from "@nextui-org/button";
+import { useState } from "react";
+
 import { getWeather } from "./api/weather/weather";
 import { UltraSrtNcstItem, WeatherBlocks } from "@/lib/types";
-import { useState } from "react";
+import { getCurrentTimeParsed } from "@/lib/utils";
 
 export default function Home() {
   const [weatherForecastBlock, setWeatherForecastBlock] = useState<WeatherBlocks>([]);
   const [buttonClicked, setButtonClicked] = useState<boolean>(false);
 
-  function handleClick() {
+  const handleClick = () => {
     setButtonClicked(true);
-    getWeather("20240330", "2000").then((data) => {
+    getWeather(getCurrentTimeParsed()).then((data) => {
       if (!data || !data.response) {
         console.error("Error: Something went wrong");
         console.log(data);
@@ -26,9 +28,9 @@ export default function Home() {
       }));
       setWeatherForecastBlock(weatherForecastBlock);
     });
-  }
+  };
 
-  function convertRainType(rainType: string | undefined): string {
+  const convertRainType = (rainType: string | undefined): string => {
     switch (rainType) {
       case "0":
         return "맑음";
@@ -47,14 +49,16 @@ export default function Home() {
       default:
         return "Unknown";
     }
-  }
+  };
 
   // location
   const location = "부산 사직동";
 
   return (
     <main>
-      <div className="flex justify-center">{!buttonClicked && <Button onClick={handleClick}>{location} 날씨 가져오기</Button>}</div>
+      <div className="flex justify-center">
+        {!buttonClicked && <Button onClick={handleClick}>{location} 날씨 가져오기</Button>}
+      </div>
       <div className="m-auto flex flex-col items-center text-3xl">
         {weatherForecastBlock.length > 0 && (
           <>

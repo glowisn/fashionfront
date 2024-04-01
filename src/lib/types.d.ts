@@ -35,3 +35,8 @@ export type WeatherBlocks = {
   category: string;
   obsrValue: string;
 }[];
+
+export type CurrentRequestTime = {
+  base_date: string;
+  base_time: string;
+};

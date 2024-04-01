@@ -1,3 +1,4 @@
+import { CurrentRequestTime } from './../../../lib/types.d';
 import { WeatherParams } from "@/lib/types";
 import axios from "axios";
 
@@ -12,7 +13,7 @@ const defaultParams = {
   ny: 76,
 };
 
-export async function getWeather(base_date: string, base_time: string) {
+export async function getWeather({ base_date, base_time }: CurrentRequestTime) {
   const params: WeatherParams = {
     ...defaultParams,
     base_date,
