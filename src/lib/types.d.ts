@@ -1,6 +1,6 @@
 import { UltraSrtNcstResponse } from '@/lib/types';
 export interface WeatherParams {
-  serviceKey: string;
+  // serviceKey: string;
   numOfRows: number;
   pageNo: number;
   dataType: string;

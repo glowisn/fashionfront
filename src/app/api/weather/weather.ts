@@ -2,10 +2,9 @@ import { CurrentRequestTime } from './../../../lib/types.d';
 import { WeatherParams } from "@/lib/types";
 import axios from "axios";
 
-const URL = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst";
+const URL = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?serviceKey=${process.env.NEXT_PUBLIC_DATA_GO_API_KEY_EN}`;
 
 const defaultParams = {
-  serviceKey: process.env.DATA_GO_API_KEY_EN!,
   numOfRows: 14,
   pageNo: 1,
   dataType: "JSON",
